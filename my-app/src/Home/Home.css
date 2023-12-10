@@ -1,0 +1,43 @@
+.header{
+    display: flex;
+    justify-content: flex-end;
+    padding: 1rem;
+    gap:10px;
+}
+
+.home__content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    height:60vh;
+    border: 2px solid black;
+}
+
+.search-bar{
+ border:2px solid black;
+ width: 40vw;
+ height: 5vh;
+}
+
+#form{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 5vh;
+}
+#search{
+   width: 80%;
+   height: 80%;
+   outline: none;
+   border-style: none;
+   border-radius: 10px;
+   font-size: 1rem;
+}
+
+.btns{
+    border:2px solid black;
+    width: 25%;
+    display: flex;
+    justify-content: space-around;
+}
