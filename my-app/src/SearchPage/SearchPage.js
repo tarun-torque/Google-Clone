@@ -13,33 +13,40 @@ import axios from 'axios';
 
 function SearchPage({searchTerm}){
 // -------------------------Search from search Page------------------
-    const [searchPage,setSearchPage] =useState();
+    
+// ---------------------Clear Term------------------------------
 
-    const searchOutput =()=>{
-        setSearchPage(searchTerm)
-    }
-    console.log(searchPage)
-    // ---------------------------------------------------
+const [clear,setClear] =useState('');
 
-    // -----------------API call-------------------------------
+const clearTerm=()=>{
+    setClear('')
+}
+
+
+const[apidata, setApidata] = useState({})
+
+// -----------------API call----------------------
  
-    const apicall = async ()=>{
+    const  apicall = async ()=>{
         try{
-            const res =await axios.get("")
-
-
-
+            const res= await axios.get(`https://www.googleapis.com/customsearch/v1?key=AIzaSyA_toGoJ9frU-FekmkTcqx1hV7AJDXxV9I&cx=f4f6068be7b934d41&q=${searchTerm}`);
+            setApidata(res.data)
+            console.log(res)
+            console.log(res.data)
+            console.log(res.data.searchInformation.totalResults)
+            console.log(res.data.items[0].title)
+            
+            
         }
         catch(error){
-            console.log(error);
+            console.log(error.message);
         }
     }
     useEffect(()=>{
         apicall();
-    })
+    },[])
     return(
         <>
-
 
     <div className="search__header">
         <div className="search__logo">
@@ -47,8 +54,11 @@ function SearchPage({searchTerm}){
         </div>
 
         <div className="search-input">
-             <form id="secondForm" onSubmit={searchOutput}>
-                <input type="text" value={searchTerm} onChange={(e)=>setSearchPage(e.target.value)} id="second-search"/>
+             <form id="secondForm" >
+                <input type="text" value={searchTerm} onChange={(e)=>setClear(e.target.value)} id="second-search"/>
+                {
+                    clear && <RxCross1 onClick={clearTerm} />
+                }
              </form>
              <FaMicrophone/>
              <FaCamera />
@@ -64,6 +74,10 @@ function SearchPage({searchTerm}){
         </div>
 
 
+
+
+
+
     </div>
 
 
@@ -76,6 +90,17 @@ function SearchPage({searchTerm}){
     </div>
 
     <hr/>
+
+
+
+
+     <div className="show-data">
+        <div className="about-result">
+            <p>About {apidata.searchInformation.searchTime} </p> 
+        </div>
+     </div>
+
+
         </>
     )
 }
