@@ -23,13 +23,13 @@ const clearTerm=()=>{
 }
 
 
-const[apidata, setApidata] = useState({})
 
 // -----------------API call----------------------
- 
+
+const[apidata, setApidata] = useState({})
     const  apicall = async ()=>{
         try{
-            const res= await axios.get(`https://www.googleapis.com/customsearch/v1?key=AIzaSyA_toGoJ9frU-FekmkTcqx1hV7AJDXxV9I&cx=f4f6068be7b934d41&q=${searchTerm}`);
+            const res= await axios.get(`https://www.googleapis.com/customsearch/v1?key=AIzaSyDJrS5nV9N15ILC-6uALB_acL-_cKCeMDs&cx=12c1cda0e02534ff9&q=${searchTerm}`);
            
             setApidata(res.data)
             console.log(res.data)
@@ -45,7 +45,16 @@ const[apidata, setApidata] = useState({})
     useEffect(()=>{
         apicall();
     },[])
+
+    const {searchInformation:{
+        totalResults
+    }} = apidata;
+    
     return(
+        
+        
+        
+
         <>
 
     <div className="search__header">
@@ -92,11 +101,11 @@ const[apidata, setApidata] = useState({})
     <hr/>
 
 
-
+    
 
      <div className="show-data">
         <div className="about-result">
-            {/* <p>About {apidata.searchInformation.searchTime} </p>  */}
+            <p>About {totalResults} </p> 
         </div>
      </div>
 
