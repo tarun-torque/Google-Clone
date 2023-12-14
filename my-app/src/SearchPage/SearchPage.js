@@ -30,18 +30,18 @@ const[apidata, setApidata] = useState({})
     const  apicall = async ()=>{
         try{
             const res= await axios.get(`https://www.googleapis.com/customsearch/v1?key=AIzaSyA_toGoJ9frU-FekmkTcqx1hV7AJDXxV9I&cx=f4f6068be7b934d41&q=${searchTerm}`);
+           
             setApidata(res.data)
-            console.log(res)
             console.log(res.data)
             console.log(res.data.searchInformation.totalResults)
-            console.log(res.data.items[0].title)
-            
-            
+            // console.log(res.data.items[0].title)
+
         }
         catch(error){
             console.log(error.message);
         }
     }
+
     useEffect(()=>{
         apicall();
     },[])
@@ -96,7 +96,7 @@ const[apidata, setApidata] = useState({})
 
      <div className="show-data">
         <div className="about-result">
-            <p>About {apidata.searchInformation.searchTime} </p> 
+            {/* <p>About {apidata.searchInformation.searchTime} </p>  */}
         </div>
      </div>
 

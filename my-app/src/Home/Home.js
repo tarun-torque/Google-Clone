@@ -46,20 +46,20 @@ import { Navigate, useNavigate } from 'react-router-dom';
 
         <div className='search-bar'>
             <form id="form" onSubmit={gotoSearch}>
-                <FaSearch />
+                <FaSearch   className='icons' / >
                 <input type='text' id="search" value={term} onChange={(e)=>setTerm(e.target.value)} required/>
                 {
                     term && <RxCross1 onClick={clearTerm} />
                 }
-                <FaMicrophone />
-                <FaCamera /> 
+                <FaMicrophone className='icons' />
+                <FaCamera  className='icons' /> 
             </form>
         </div>
 
 
         <div className='btns'>
-            <button>Google Search</button>
-            <button>I'm feeling lucky</button>
+            <button className='btn'>Google Search</button>
+            <button className='btn'>I'm feeling lucky</button>
         </div>
 
     </div>

@@ -11,7 +11,7 @@
     align-items: center;
     justify-content: space-evenly;
     height:60vh;
-    border: 2px solid black;
+    
 }
 
 .search-bar{
@@ -36,8 +36,62 @@
 }
 
 .btns{
-    border:2px solid black;
     width: 25%;
     display: flex;
     justify-content: space-around;
+}
+
+
+@media only screen and (min-width: 1500px){
+
+  .header div{
+    font-size: 1.5rem;
+  }
+
+  .icons{
+    font-size: 1.5rem;
+  }
+  .btns{
+    width: 40vw;
+  }
+  .btn{
+    width: 10vw;
+    line-height: 2;
+  }
+}
+
+
+
+@media only screen and (max-width: 1500px) and (min-width:630px) {
+
+    .btns{
+        width: 40vmax;
+      }
+      .search-bar{
+        width: 50vmax;
+      }
+}
+
+
+
+@media only screen and (max-width: 630px) and (min-width:375px) {
+
+    .btns{
+        width: 50vmax;
+      }
+      .search-bar{
+        width: 60vmax;
+      }
+}
+
+@media only screen and (max-width: 375px)  {
+     .logo__Home img{
+        width: 80vmin;
+     }
+    .btns{
+        width: 50vmax;
+      }
+      .search-bar{
+        width: 90vmin;
+      }
 }
