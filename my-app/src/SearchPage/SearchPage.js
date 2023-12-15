@@ -46,9 +46,7 @@ const[apidata, setApidata] = useState({})
         apicall();
     },[])
 
-    const {searchInformation:{
-        totalResults
-    }} = apidata;
+    
     
     return(
         
@@ -105,7 +103,7 @@ const[apidata, setApidata] = useState({})
 
      <div className="show-data">
         <div className="about-result">
-            <p>About {totalResults} </p> 
+            <p>About {apidata ?.searchInformation ?.totalResults} </p> 
         </div>
      </div>
 
