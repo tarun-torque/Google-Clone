@@ -102,9 +102,30 @@ const[apidata, setApidata] = useState({})
     
 
      <div className="show-data">
+
         <div className="about-result">
-            <p>About {apidata ?.searchInformation ?.totalResults} </p> 
+            <p>About {apidata ?.searchInformation ?.formattedTotalResults} results({apidata ?.searchInformation ?.formattedSearchTime} seconds) </p> 
         </div>
+
+
+     <div className="data">
+
+    {
+        apidata?.items?.map((item)=>{
+            return(
+                <>
+                <div className="title"> {item?.displayLink}</div>
+                <div className="link"><a href={item?.link}>{item?.title}</a></div>
+                <p className="snippet" dangerouslySetInnerHTML={{ __html: item.htmlSnippet }}    /> 
+                <p>{item?.formattedUrl}</p>
+                </>
+            )
+        })
+    }
+     </div>
+
+        
+
      </div>
 
 

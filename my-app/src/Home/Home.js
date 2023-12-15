@@ -24,7 +24,8 @@ import { Navigate, useNavigate } from 'react-router-dom';
 
     const navgate =useNavigate();
 
-    const gotoSearch =()=>{
+    const gotoSearch =(e)=>{
+        e.preventDefault();
         setSearch(term);
         navgate("/search")
     }
