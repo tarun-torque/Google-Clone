@@ -8,10 +8,18 @@ import { TbGridDots } from "react-icons/tb";
 import { RxAvatar } from "react-icons/rx";
 import { IoSettings } from "react-icons/io5";
 import axios from 'axios';
+import Loading from "../Loading/Loading";
 
 
 
 function SearchPage({searchTerm}){
+// loading--------------------
+
+// const [isLoading ,setIsLoading] = useState(false);
+
+
+
+
 // -------------------------Search from search Page------------------
     
 // ---------------------Clear Term------------------------------
@@ -49,11 +57,14 @@ const[apidata, setApidata] = useState({})
     
     
     return(
-        
-        
-        
-
         <>
+
+    {
+        apidata && <Loading />
+    }
+
+
+
 
     <div className="search__header">
         <div className="search__logo">
@@ -113,12 +124,12 @@ const[apidata, setApidata] = useState({})
     {
         apidata?.items?.map((item)=>{
             return(
-                <>
-                <div className="title"> {item?.displayLink}</div>
-                <div className="link"><a href={item?.link}>{item?.title}</a></div>
-                <p className="snippet" dangerouslySetInnerHTML={{ __html: item.htmlSnippet }}    /> 
-                <p>{item?.formattedUrl}</p>
-                </>
+                <div className="results">
+                     <div className="title"> {item?.displayLink}</div>
+                     <div className="link"><a href={item?.link}>{item?.title}</a></div>
+                     <p className="snippet" dangerouslySetInnerHTML={{ __html: item.htmlSnippet }}    /> 
+                     <p>{item?.formattedUrl}</p>
+                </div>
             )
         })
     }

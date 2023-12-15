@@ -32,3 +32,12 @@
     justify-content: space-evenly;
     margin-bottom: 2%;
 }
+
+.results{
+    margin-top:2vmax;
+    margin-bottom:2vmax;
+    width: 60vmax;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
