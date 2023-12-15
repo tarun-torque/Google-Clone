@@ -4,9 +4,11 @@ import { TbGridDots } from "react-icons/tb";
 import { RxAvatar } from "react-icons/rx";
 import { FaSearch } from "react-icons/fa";
 import { FaMicrophone } from "react-icons/fa";
+import Mic from './Mic.png'
 import { FaCamera } from "react-icons/fa";
 import { RxCross1 } from "react-icons/rx";
 import { Navigate, useNavigate } from 'react-router-dom';
+
 
 
 
@@ -52,7 +54,7 @@ import { Navigate, useNavigate } from 'react-router-dom';
                 {
                     term && <RxCross1 onClick={clearTerm} />
                 }
-                <FaMicrophone className='icons' />
+                <img src={Mic}  className='icons' />
                 <FaCamera  className='icons' /> 
             </form>
         </div>
