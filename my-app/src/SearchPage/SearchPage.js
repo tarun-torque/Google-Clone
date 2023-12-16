@@ -9,6 +9,7 @@ import { RxAvatar } from "react-icons/rx";
 import { IoSettings } from "react-icons/io5";
 import axios from 'axios';
 import Loading from "../Loading/Loading";
+import Mic from '../Home/Mic.png'
 
 
 
@@ -60,7 +61,7 @@ const[apidata, setApidata] = useState({})
         <>
 
     {
-        apidata && <Loading />
+        !apidata && <Loading />
     }
 
 
@@ -78,9 +79,12 @@ const[apidata, setApidata] = useState({})
                     clear && <RxCross1 onClick={clearTerm} />
                 }
              </form>
-             <FaMicrophone/>
-             <FaCamera />
-             <FaSearch/>
+             {/* <FaMicrophone/> */}
+             <img src={Mic} alt="" />
+             <img src="https://upload.wikimedia.org/wikipedia/commons/f/f9/Google_Lens_-_new_logo.png" alt="" />
+             
+             {/* <FaCamera /> */}
+             
             
         </div>
 
@@ -124,6 +128,7 @@ const[apidata, setApidata] = useState({})
     {
         apidata?.items?.map((item)=>{
             return(
+
                 <div className="results">
                      <div className="title"> {item?.displayLink}</div>
                      <div className="link"><a href={item?.link}>{item?.title}</a></div>

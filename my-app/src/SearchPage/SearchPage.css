@@ -39,5 +39,70 @@
     width: 60vmax;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    margin-left: 20vmin;
+
 }
+
+.link{
+    font-size: 1.5rem;
+}
+
+.snippet{
+    font-weight: 600;
+}
+
+
+
+
+
+
+  
+  
+  
+  
+  
+  
+  @media only screen and (max-width: 630px) and (min-width:375px)  {
+  
+     .search__logo img{
+        width: 25vmin;
+     }
+
+    #second-search{
+        width: 35vmax;
+    }
+    .search__header{
+        width: 130vw;
+        /* border: 2px solid black; */
+    }
+
+
+     .results{
+        margin-top:3vmax;
+        margin-bottom:4vmax;
+        width: 100vw;
+        display: flex ;
+        flex-direction: column;
+        justify-content: center;
+
+    
+    }
+
+
+
+  }
+  
+  @media only screen and (max-width: 375px) {
+    .search__logo img{
+        width: 30vmin;
+        
+     }
+    .search__header,.subHeader{
+        width: 160vw;
+        /* border: 2px solid black; */
+    }
+
+    .results{
+        margin-bottom: 5vmax;
+    }
+  }
