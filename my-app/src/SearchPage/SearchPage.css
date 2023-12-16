@@ -45,6 +45,13 @@
 
 .link{
     font-size: 1.5rem;
+   
+}
+.link a {
+    text-decoration: none;
+}
+.link a:hover {
+    text-decoration: underline;
 }
 
 .snippet{
@@ -57,9 +64,7 @@
 
 
   
-  
-  
-  
+
   
   
   @media only screen and (max-width: 630px) and (min-width:375px)  {

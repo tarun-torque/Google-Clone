@@ -54,7 +54,7 @@ import { Navigate, useNavigate } from 'react-router-dom';
                 {
                     term && <RxCross1 onClick={clearTerm} />
                 }
-                <img src={Mic}  className='icons' />
+                <img src={Mic} style={{height:"32px"}} className='icons'  />
                 <FaCamera  className='icons' /> 
             </form>
         </div>

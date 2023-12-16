@@ -10,6 +10,7 @@ import { IoSettings } from "react-icons/io5";
 import axios from 'axios';
 import Loading from "../Loading/Loading";
 import Mic from '../Home/Mic.png'
+import voice from "../VoiceSearch/voice";
 
 
 
@@ -51,8 +52,11 @@ const[apidata, setApidata] = useState({})
         }
     }
 
+    
+
     useEffect(()=>{
         apicall();
+
     },[])
 
     
@@ -80,7 +84,7 @@ const[apidata, setApidata] = useState({})
                 }
              </form>
              {/* <FaMicrophone/> */}
-             <img src={Mic} alt="" />
+             <img src={Mic} alt=""  />
              <img src="https://upload.wikimedia.org/wikipedia/commons/f/f9/Google_Lens_-_new_logo.png" alt="" />
              
              {/* <FaCamera /> */}
