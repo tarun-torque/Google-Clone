@@ -3,11 +3,13 @@ import './Home.css'
 import { TbGridDots } from "react-icons/tb";
 import { RxAvatar } from "react-icons/rx";
 import { FaSearch } from "react-icons/fa";
-import { FaMicrophone } from "react-icons/fa";
 import Mic from './Mic.png'
 import { FaCamera } from "react-icons/fa";
 import { RxCross1 } from "react-icons/rx";
 import { Navigate, useNavigate } from 'react-router-dom';
+import Phone from '../VoiceSearch/Phone';
+
+
 
 
 
@@ -18,9 +20,14 @@ import { Navigate, useNavigate } from 'react-router-dom';
  function Home({setSearch}){
 
     const[term ,setTerm] = useState('');
+    const[voice,setVoice] = useState(false);
 
     const clearTerm=()=>{
         setTerm('');
+    }
+    
+    const Open_voice =()=>{
+        setVoice(!voice);
     }
 
 
@@ -34,12 +41,25 @@ import { Navigate, useNavigate } from 'react-router-dom';
 
     return(
         <>
+  
+          {voice && <Phone />}
+
+  
+
+
         <div className='header'>
             <div>Gmail</div>
             <div>Images</div>
             <div><TbGridDots /></div>
             <div><RxAvatar /> </div>
         </div>
+
+
+         
+        
+
+
+
 
     <div className='home__content'>
 
@@ -54,10 +74,12 @@ import { Navigate, useNavigate } from 'react-router-dom';
                 {
                     term && <RxCross1 onClick={clearTerm} />
                 }
-                <img src={Mic} style={{height:"32px"}} className='icons'  />
+                <img src={Mic} style={{height:"32px"}} id="mic"className='icons' onClick={Open_voice}  />
                 <FaCamera  className='icons' /> 
             </form>
         </div>
+
+       
 
 
         <div className='btns'>
@@ -65,7 +87,12 @@ import { Navigate, useNavigate } from 'react-router-dom';
             <button className='btn'>I'm feeling lucky</button>
         </div>
 
+
+
     </div>
+
+
+    
 
 
         </>
