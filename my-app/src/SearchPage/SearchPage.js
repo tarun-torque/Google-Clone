@@ -8,6 +8,7 @@ import axios from 'axios';
 import Loading from "../Loading/Loading";
 import Mic from '../Home/Mic.png'
 import { Link } from "react-router-dom";
+import { recognition } from "../VoiceSearch/voiceFxn";
 
 
 

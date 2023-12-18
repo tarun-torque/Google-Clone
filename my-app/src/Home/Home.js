@@ -8,12 +8,7 @@ import { FaCamera } from "react-icons/fa";
 import { RxCross1 } from "react-icons/rx";
 import { Navigate, useNavigate } from 'react-router-dom';
 import Phone from '../VoiceSearch/Phone';
-
-
-
-
-
-
+import { recognition } from '../VoiceSearch/voiceFxn';
 
 
 
@@ -27,9 +22,19 @@ import Phone from '../VoiceSearch/Phone';
     }
     
     const Open_voice =()=>{
-        setVoice(!voice);
+        setVoice(true);
+        recognition.start();
+        recognition.onresult =(event)=>{
+            var current = event.resultIndex;
+            var transcript =event.results[current][0].transcript;
+            setTerm(transcript);
+            console.log(transcript);
+        }
     }
 
+     const clearVoiceSearch=()=>{
+        recognition.stop();
+     }
 
     const navgate =useNavigate();
 
@@ -42,7 +47,7 @@ import Phone from '../VoiceSearch/Phone';
     return(
         <>
   
-          {voice && <Phone />}
+          {voice && <Phone  />}
 
   
 
