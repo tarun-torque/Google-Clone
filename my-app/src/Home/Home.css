@@ -18,6 +18,8 @@
  border:2px solid black;
  width: 40vw;
  height: 5vh;
+ border-radius: 20px;
+ border-color: #FFFDD0;
 }
 
 #form{
@@ -26,6 +28,7 @@
     justify-content: space-evenly;
     height: 5vh;
 }
+
 #search{
    width: 80%;
    height: 80%;
@@ -33,6 +36,7 @@
    border-style: none;
    border-radius: 10px;
    font-size: 1rem;
+ 
 }
 
 .btns{

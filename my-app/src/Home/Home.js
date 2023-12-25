@@ -6,10 +6,10 @@ import { FaSearch } from "react-icons/fa";
 import Mic from './Mic.png'
 import { FaCamera } from "react-icons/fa";
 import { RxCross1 } from "react-icons/rx";
-import { Navigate, useNavigate } from 'react-router-dom';
-import Phone from '../VoiceSearch/Phone';
+import {  useNavigate } from 'react-router-dom';
 import { recognition } from '../VoiceSearch/voiceFxn';
-
+import '../VoiceSearch/voice.css';
+ 
 
 
  function Home({setSearch}){
@@ -28,18 +28,21 @@ import { recognition } from '../VoiceSearch/voiceFxn';
             var current = event.resultIndex;
             var transcript =event.results[current][0].transcript;
             setTerm(transcript);
-            console.log(transcript);
+            
         }
     }
 
      const clearVoiceSearch=()=>{
+        setVoice(false);
         recognition.stop();
+        gotoSearch();
+       
      }
 
     const navgate =useNavigate();
 
     const gotoSearch =(e)=>{
-        e.preventDefault();
+        // e.preventDefault();
         setSearch(term);
         navgate("/search")
     }
@@ -47,7 +50,11 @@ import { recognition } from '../VoiceSearch/voiceFxn';
     return(
         <>
   
-          {voice && <Phone  />}
+          {voice && <div className='phone'>
+      <RxCross1 onClick={clearVoiceSearch} />
+      <p>Speak ...</p>
+      <img src={Mic} alt="" />
+    </div>}
 
   
 

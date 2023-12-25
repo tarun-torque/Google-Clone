@@ -10,6 +10,7 @@
     width: 50%;
     height: 5vh;
     gap:10px;
+    border-color: #FFFDD0;
 }
 #secondForm{
     width: 100%;

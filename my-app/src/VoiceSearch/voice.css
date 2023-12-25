@@ -11,3 +11,11 @@
  height: 40%;
  background-color:whitesmoke;
 }
+
+@media (max-width:674px) {
+    .phone{
+        width: 40%;
+        top:50vmin;
+        margin-left:-18vmax;
+    }   
+}

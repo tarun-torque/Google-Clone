@@ -9,6 +9,7 @@ import Loading from "../Loading/Loading";
 import Mic from '../Home/Mic.png'
 import { Link } from "react-router-dom";
 import { recognition } from "../VoiceSearch/voiceFxn";
+import '../VoiceSearch/voice.css';
 
 
 
@@ -38,9 +39,7 @@ const clearTerm=()=>{
     setNewTerm('')
 }
 
-
-
-// -----------------API call----------------------
+// -----------------API call-------------------------------------
 
 const[apidata, setApidata] = useState({})
     const  apicall = async ()=>{
@@ -66,10 +65,34 @@ const[apidata, setApidata] = useState({})
 
     },[newTerm])
 
-    
+    const [voice,setVoice] =useState(false)
+    const Open_voice =()=>{
+        setVoice(true);
+        recognition.start();
+        recognition.onresult =(event)=>{
+            var current = event.resultIndex;
+            var transcript =event.results[current][0].transcript;
+            setNewTerm(transcript);
+            
+        }
+    }
+
+
+    const clearVoiceSearch=()=>{
+        setVoice(false);
+        recognition.stop();
+        // gotoSearch();
+       
+     }
     
     return(
         <>
+        
+        {voice && <div className='phone'>
+      <RxCross1 onClick={clearVoiceSearch} />
+      <p>Speak ...</p>
+      <img src={Mic} alt="" />
+    </div>}
 
    
 
@@ -90,7 +113,7 @@ const[apidata, setApidata] = useState({})
                 }
              </form>
             
-             <img src={Mic} alt=""  />
+             <img src={Mic} alt=""  onClick={Open_voice}/>
              <img src="https://upload.wikimedia.org/wikipedia/commons/f/f9/Google_Lens_-_new_logo.png" alt="" />
              
         </div>
@@ -101,12 +124,6 @@ const[apidata, setApidata] = useState({})
             <TbGridDots/>
             <RxAvatar />
         </div>
-
-
-
-
-
-
     </div>
 
 
@@ -118,6 +135,7 @@ const[apidata, setApidata] = useState({})
         <p>Shopping</p>
     </div>
 
+
     <hr/>
 
     
@@ -128,8 +146,9 @@ const[apidata, setApidata] = useState({})
 
         
 
+
   {
-    !apidata ? <div className="about-result">
+    apidata ? <div className="about-result">
     <p>About {apidata ?.searchInformation ?.formattedTotalResults} results({apidata ?.searchInformation ?.formattedSearchTime} seconds) </p> 
 </div>  : <div style={{display:"flex" , justifyContent:"center" , alignItems:"center" ,fontWeight:900 , backgroundColor:"yellow"}}>
     <p>Dailt limit of search queryies is exhausted try later </p>
@@ -137,8 +156,6 @@ const[apidata, setApidata] = useState({})
     </div>
   }
         
-
-
      <div className="data">
 
     {
