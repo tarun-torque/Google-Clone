@@ -5,7 +5,7 @@ import { TbGridDots } from "react-icons/tb";
 import { RxAvatar } from "react-icons/rx";
 import { IoSettings } from "react-icons/io5";
 import axios from 'axios';
-import Loading from "../Loading/Loading";
+
 import Mic from '../Home/Mic.png'
 import { Link } from "react-router-dom";
 import { recognition } from "../VoiceSearch/voiceFxn";
@@ -38,7 +38,7 @@ const searchAgain =()=>{
 const clearTerm=()=>{
     setNewTerm('')
 }
-
+const[err,setErr]=useState(null)
 // -----------------API call-------------------------------------
 
 const[apidata, setApidata] = useState({})
@@ -54,7 +54,9 @@ const[apidata, setApidata] = useState({})
 
         }
         catch(error){
-            console.log(error.message);
+            let err =error.message;
+            setErr(err)
+            console.log(err);
         }
     }
 
@@ -132,7 +134,7 @@ const[apidata, setApidata] = useState({})
         <p>images</p>
         <p>Videos</p>
         <p>News</p>
-        <p>Shopping</p>
+        
     </div>
 
 
@@ -148,11 +150,11 @@ const[apidata, setApidata] = useState({})
 
 
   {
-    apidata ? <div className="about-result">
+    !err ? <div className="about-result">
     <p>About {apidata ?.searchInformation ?.formattedTotalResults} results({apidata ?.searchInformation ?.formattedSearchTime} seconds) </p> 
 </div>  : <div style={{display:"flex" , justifyContent:"center" , alignItems:"center" ,fontWeight:900 , backgroundColor:"yellow"}}>
     <p>Dailt limit of search queryies is exhausted try later </p>
-    <p>{apidata?.error?.message}</p>
+    <p>{err}</p>
     </div>
   }
         
