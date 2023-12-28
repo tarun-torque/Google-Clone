@@ -8,14 +8,14 @@ import axios from 'axios';
 
 import Mic from '../Home/Mic.png'
 import { Link } from "react-router-dom";
-import { recognition } from "../VoiceSearch/voiceFxn";
+
 import '../VoiceSearch/voice.css';
 
 
 
 
 function SearchPage({searchTerm}){
-// loading--------------------
+
 
 // const [isLoading ,setIsLoading] = useState(false);
 
@@ -67,34 +67,12 @@ const[apidata, setApidata] = useState({})
 
     },[newTerm])
 
-    const [voice,setVoice] =useState(false)
-    const Open_voice =()=>{
-        setVoice(true);
-        recognition.start();
-        recognition.onresult =(event)=>{
-            var current = event.resultIndex;
-            var transcript =event.results[current][0].transcript;
-            setNewTerm(transcript);
-            
-        }
-    }
-
-
-    const clearVoiceSearch=()=>{
-        setVoice(false);
-        recognition.stop();
-        // gotoSearch();
-       
-     }
+    
     
     return(
         <>
         
-        {voice && <div className='phone'>
-      <RxCross1 onClick={clearVoiceSearch} />
-      <p>Speak ...</p>
-      <img src={Mic} alt="" />
-    </div>}
+       
 
    
 
@@ -111,11 +89,11 @@ const[apidata, setApidata] = useState({})
                 <input type="text" value={newTerm}  onChange={(e)=>setNewTerm(e.target.value)} id="second-search"/>
                 
                 {
-                    newTerm && <RxCross1 onClick={clearTerm} />
+                    newTerm && <RxCross1 onClick={clearTerm}  />
                 }
              </form>
             
-             <img src={Mic} alt=""  onClick={Open_voice}/>
+             <img src={Mic} alt="" />
              <img src="https://upload.wikimedia.org/wikipedia/commons/f/f9/Google_Lens_-_new_logo.png" alt="" />
              
         </div>
